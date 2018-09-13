@@ -6,6 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.save
 Queen.html
 
 # User-specific files (MonoDevelop/Xamarin Studio)
