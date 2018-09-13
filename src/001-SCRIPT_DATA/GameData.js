@@ -994,6 +994,11 @@ App.Data.Lists = {
 					"Grow" : "Your chest feels warm and tender, like your @@color:lime;&uArr;breasts are growing@@.",
 					"Shrink" : "Your chest feels lighter, almost as if your @@color:red;&dArr;breasts are shrinking@@."
 				},
+				"Lactation" :
+				{
+					"Grow" : "Your breasts feel warm and tough, like your @@color:lime;&uArr;breasts are filling up@@.",
+					"Shrink" : "Your breasts feel lighter and shallower, almost as if your @@color:red;&dArr;breasts are empting@@."
+				},
 				"Ass" :
 				{
 					"Grow" : "Your @@color:lime;&uArr;butt feels larger@@ and more prominent, maybe you should go on a diet?",
