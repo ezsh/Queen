@@ -53,15 +53,21 @@ App.Data.EffectLib.NATURAL_HORMONE_SHIFT = {
         //shift stored in the player object.
         var HormoneShift = 0;
 
-        if ((p.GetStat("STAT", "Hormones") > 100) && p.GetStatXP("STAT", "Hormones") > 0 ) {
-            HormoneShift = ( p.GetStat("STAT", "Hormones") - 100 );
-            p.AdjustBodyXP("Face",   HormoneShift            ,     40);
-            p.AdjustBodyXP("Bust",   HormoneShift            ,      5);
-            p.AdjustBodyXP("Lips",   HormoneShift            ,     40);
-            p.AdjustBodyXP("Ass",    HormoneShift            ,     10);
-            p.AdjustBodyXP("Hips",   HormoneShift            ,     10);
-            p.AdjustBodyXP("Penis", (HormoneShift * -1.0)    ,      1);
-            p.AdjustBodyXP("Balls", (HormoneShift * -1.0)    ,      0);
+        if ((this.GetStat("STAT", "Hormones") > 100) && this.GetStatXP("STAT", "Hormones") > 0 ) {
+            HormoneShift = ( this.GetStat("STAT", "Hormones") - 100 );
+            this.AdjustBodyXP("Face",   HormoneShift            ,     40);
+            this.AdjustBodyXP("Bust",   HormoneShift            ,      5);
+            this.AdjustBodyXP("Lips",   HormoneShift            ,     40);
+            this.AdjustBodyXP("Ass",    HormoneShift            ,     10);
+            this.AdjustBodyXP("Hips",   HormoneShift            ,     10);
+            // The "Futa" stat blocks penis shrinking if penis stat is lower or equal to the futa stat.
+            // The balls shrinking is not affected, as usual futas have no balls.
+            var FutaPercent = this.GetStatPercent("STAT", "Futa");
+            var PenisPercent = this.GetStatPercent("BODY", "Penis");
+            if (PenisPercent > FutaPercent) {
+                this.AdjustBodyXP("Penis", (HormoneShift * -1.0)    ,      1);
+            }
+            this.AdjustBodyXP("Balls", (HormoneShift * -1.0)    ,      0);
         } else {
             if (p.GetStatXP("STAT", "Hormones") < 0) {
                 HormoneShift = ( 100 - p.GetStat("STAT", "Hormones"));

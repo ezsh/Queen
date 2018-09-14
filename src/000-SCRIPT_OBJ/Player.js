@@ -57,7 +57,8 @@ App.Entity.PlayerState = function (){
         "Fitness":          0,
         "Toxicity":         0,
         "Hormones":         0,
-        "Energy":           0
+        "Energy":           0,
+        "Futa":             0
     };
 
     this.CoreStatsXP = {
@@ -69,7 +70,8 @@ App.Entity.PlayerState = function (){
         "Fitness":          0,
         "Toxicity":         0,
         "Hormones":         0,
-        "Energy":           0
+        "Energy":           0,
+        "Futa":             0,
     };
 
     this.BodyStats = {
@@ -2079,6 +2081,16 @@ App.Entity.Player = /** @class Player @type {Player} */ class Player {
      */
     GetReels() {
         return this.Inventory.EquippedReelItems();
+    }
+
+    /**
+     * @returns {boolean}
+     */
+    IsFuta() {
+        if (this._state.CoreStats["Futa"] > 0) {
+            return true;
+        }
+        return false;
     }
 
     // endregion
