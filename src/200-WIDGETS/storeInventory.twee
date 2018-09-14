@@ -5,10 +5,14 @@
 <<set _ST = _SE.OpenStore(setup.player, _NPC);>>\
 <<set _CI = _ST.GetCommonInventory();>>\
 <<set _RI = _ST.GetRareInventory(); >>\
+<<set _DUR = _ST.DaysUntilRestock(); >>\
 <<nobr>>
 <table class=".MyTable">
 <tbody>
-<tr><td colspan="5" style="font-size:larger;text-align:center;">@@color:cyan;<<print _ST.GetName();>>@@</td>
+<tr><td colspan="3" style="font-size:larger;text-align:center;">@@color:cyan;<<print _ST.GetName();>>@@</td>
+<<if _DUR != 0>>
+<td colspan="2">Restock in <<print _ST.DaysUntilRestock();>> days</td>
+<</if>>
 </tr>
 <tr style="border-bottom:solid 1px white;">
 <td style="width: 320px;">@@color:yellow;General Items@@</td>

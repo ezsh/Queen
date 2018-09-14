@@ -213,6 +213,18 @@ var Store = function(Player, NPC, StoreData) {
         }
     };
 
+    /**
+     * Returns days until the next restocking
+     * @returns {int}
+     */
+    this.DaysUntilRestock = function()
+    {
+        // Don't stock stuff in markets
+        if (this._Data["RESTOCK"] == 0) return 0;
+        return this._Data["RESTOCK"] - (this._Player.Day
+             - this._Player.StoreInventory[this._Data["ID"]]["LAST_STOCKED"]);
+    }
+
     /* FIXME: Let's make this trigger for the SHIP whenever you land at a port. But not otherwise. */
     this.StockInventory = function()
     {
