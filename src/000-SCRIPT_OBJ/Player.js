@@ -1246,6 +1246,13 @@ App.Entity.Player = /** @class Player @type {Player} */ class Player {
         return Math.floor(((this.GetStat(Type, StatName) - this.GetMinStat(Type, StatName)) / ((this.GetMaxStat(Type, StatName) - this.GetMinStat(Type, StatName)))) * 100);
     }
 
+    /**
+     * Returns XP cost for lincreasing stat level by one to @see TargetScore
+     * @param {string} Type Stat name (e.g. "BODY")
+     * @param {string} StatName Stat name (e.g. "Lips")
+     * @param {number} TargetScore Target level (e.g. 13)
+     * @returns {number} XP cost
+     */
     GetLeveling (Type, StatName, TargetScore) {
         var statCfg = this.GetStatConfig(Type)[StatName];
         var Levels = statCfg.hasOwnProperty("LEVELING_COST") ? statCfg["LEVELING_COST"] : statCfg["LEVELING"];

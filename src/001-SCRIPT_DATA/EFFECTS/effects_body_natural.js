@@ -104,8 +104,8 @@ App.Data.EffectLib.NATURAL_HAIR_GROW = {
 /** LACTATION */
 App.Data.EffectLib.NATURAL_LACTATION_DECREASE = {
     "FUN" : /** @param {App.Entity.Player} p
-     @param {App.Items.Consumable} o*/
-    function(o,p) { p.AdjustBody("Lactation", -1); },
+    @param {App.Items.Consumable} o*/
+    function(o,p) { p.AdjustBodyXP("Lactation", -100, 0); },
     "VALUE" : 0
 };
 /** ASS */
