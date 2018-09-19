@@ -17,7 +17,7 @@ App.Data.JobData["CAPT01"] = {
     ],
     "INTRO" :
     "NPC_NAME says, \"Not bad PLAYER_NAME, not bad at all. I was dubious at first, but it seems like you're 'developing' quite nicely. "+
-    "With those pBUST tits and pASS ass you certainly have the right assets for the job of the ship's whore. Tell you what, I might be "+
+    "With those nBUST and nASS you certainly have the right assets for the job of the ship's whore. Tell you what, I might be "+
     "persuaded to part with some coin and some 'special training' that is guaranteed to increase your income. You game slut?\"",
     "START" :
     "NPC_NAME roughly pushes you through the door into his private chambers with such force that you nearly trip. You "+
