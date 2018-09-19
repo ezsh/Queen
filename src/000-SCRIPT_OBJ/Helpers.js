@@ -767,6 +767,20 @@ App.PR = new function() {
 			return this.GetAdjective("BODY", "Bust", bPercent) + ' ' + this.GetAdjective("BODY", "BustFirmness", fPercent);
 		}
 		return this.TokenizeRating(Player, "BODY", "Bust", this.GetRating("Bust", bPercent));
+    };
+
+    /**
+     * Print out a description of the Player's bust firmness statistic.
+     * @param {App.Entity.Player} Player
+     * @param {number|null} Arg
+     * @returns {XML|string|void}
+     */
+    this.pBustFirmness = function (Player, Arg) {
+		var fPercent = Player.GetStatPercent("BODY", "BustFirmness");
+		if (typeof Arg !== 'undefined') {
+			return  this.GetAdjective("BODY", "BustFirmness", fPercent);
+		}
+		return this.TokenizeRating(Player, "BODY", "BustFirmness", this.GetRating("BustFirmness", fPercent));
 	};
 
     /**

@@ -101,6 +101,14 @@ App.Data.EffectLib.NATURAL_HAIR_GROW = {
 
 /** FACE */
 /** BUST */
+/** BUST FIRMNESS */
+App.Data.EffectLib.NATURAL_BUST_SAGGINESS = {
+    "FUN" : /** @param {App.Entity.Player} p
+     @param {App.Item.Consumable} o*/
+    function(o,p) { p.AdjustBodyXP('BustFirmness', -1 * Math.pow(p.GetStat('BODY', 'Bust'), 2) / 300); },
+    "VALUE" : 0, "KNOWLEDGE" : [ "Bust Sag+" ]
+};
+
 /** LACTATION */
 App.Data.EffectLib.NATURAL_LACTATION_DECREASE = {
     "FUN" : /** @param {App.Entity.Player} p
@@ -122,5 +130,6 @@ App.Data.NaturalBodyEffects = [
     "NATURAL_HORMONE_SHIFT",
     "NATURAL_FITNESS_DECREASE",
     "NATURAL_HAIR_GROW",
-    "NATURAL_LACTATION_DECREASE"
+    "NATURAL_LACTATION_DECREASE",
+    "NATURAL_BUST_SAGGINESS"
 ];

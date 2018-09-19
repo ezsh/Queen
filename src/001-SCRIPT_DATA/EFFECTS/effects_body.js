@@ -101,6 +101,31 @@ App.Data.EffectLib["BUST_XP_LEGENDARY"] = {
     function(o,p) { p.AdjustBodyXP('Bust', 400); },
     "VALUE" : 400, "KNOWLEDGE" : [ "Bust Grow++++" ]
 };
+/** BUST FIRMNESS */
+App.Data.EffectLib["BUST_FIRMNESS_XP_COMMON"] = {
+    "FUN" : /** @param {App.Entity.Player} p
+     @param {App.Item.Consumable} o*/
+    function(o,p) { p.AdjustBodyXP('BustFirmness', 50); },
+    "VALUE" : 50, "KNOWLEDGE" : [ "Bust Firmness+" ]
+};
+App.Data.EffectLib["BUST_FIRMNESS_XP_UNCOMMON"] = {
+    "FUN" : /** @param {App.Entity.Player} p
+     @param {App.Item.Consumable} o*/
+    function(o,p) { p.AdjustBodyXP('BustFirmness', 100); },
+    "VALUE" : 100, "KNOWLEDGE" : [ "Bust Firmness++" ]
+};
+App.Data.EffectLib["BUST_FIRMNESS_XP_RARE"] = {
+    "FUN" : /** @param {App.Entity.Player} p
+     @param {App.Item.Consumable} o*/
+    function(o,p) { p.AdjustBodyXP('BustFirmness', 500); },
+    "VALUE" : 500, "KNOWLEDGE" : [ "Bust Firmness+++" ]
+};
+App.Data.EffectLib["BUST_FIRMNESS_XP_LEGENDARY"] = {
+    "FUN" : /** @param {App.Entity.Player} p
+     @param {App.Item.Consumable} o*/
+    function(o,p) { p.AdjustBodyXP('BustFirmness', 1000); },
+    "VALUE" : 1000, "KNOWLEDGE" : [ "Bust Firmness++++" ]
+};
 /** ASS */
 App.Data.EffectLib["ASS_XP_COMMON"] = {
     "FUN" : /** @param {App.Entity.Player} p

@@ -51,6 +51,31 @@ App.Data.EffectLib["BUST_REVERT_LEGENDARY"] = {
     function(o,p) { p.AdjustBodyXP('Bust', -400); },
     "VALUE" : 400, "KNOWLEDGE" : [ "Bust Shrink++++" ]
 };
+/** BUST FIRMNESS */
+App.Data.EffectLib["BUST_SAGGINESS_XP_COMMON"] = {
+    "FUN" : /** @param {App.Entity.Player} p
+     @param {App.Item.Consumable} o*/
+    function(o,p) { p.AdjustBodyXP('BustFirmness', -50); },
+    "VALUE" : 50, "KNOWLEDGE" : [ "Bust Sag+" ]
+};
+App.Data.EffectLib["BUST_SAGGINESS_UNCOMMON"] = {
+    "FUN" : /** @param {App.Entity.Player} p
+     @param {App.Item.Consumable} o*/
+    function(o,p) { p.AdjustBodyXP('BustFirmness', -100); },
+    "VALUE" : 100, "KNOWLEDGE" : [ "Bust Sag++" ]
+};
+App.Data.EffectLib["BUST_SAGGINESS_RARE"] = {
+    "FUN" : /** @param {App.Entity.Player} p
+     @param {App.Item.Consumable} o*/
+    function(o,p) { p.AdjustBodyXP('BustFirmness', -500); },
+    "VALUE" : 500, "KNOWLEDGE" : [ "Bust Sag+++" ]
+};
+App.Data.EffectLib["BUST_SAGGINESS_LEGENDARY"] = {
+    "FUN" : /** @param {App.Entity.Player} p
+     @param {App.Item.Consumable} o*/
+    function(o,p) { p.AdjustBodyXP('BustFirmness', -1000); },
+    "VALUE" : 1000, "KNOWLEDGE" : [ "Bust Sag++++" ]
+};
 //* ASS */
 App.Data.EffectLib["ASS_REVERT_COMMON"] = {
     "FUN" : /** @param {App.Entity.Player} p
