@@ -746,7 +746,7 @@ App.Entity.Player = /** @class Player @type {Player} */ class Player {
         ConfigOb = this.GetStatConfig(Type);
 
         for (Prop in ConfigOb) {
-            if(!ConfigOb.hasOwnProperty(Prop)) continue;
+            if(!ConfigOb.hasOwnProperty(Prop) || ConfigOb[Prop]["START"] === undefined) continue;
             if (Type == "BODY") this.AdjustBody(Prop, ConfigOb[Prop]["START"]);
             if (Type == "SKILL") this.AdjustSkill(Prop, ConfigOb[Prop]["START"]);
             if (Type == "STAT") this.AdjustStat(Prop, ConfigOb[Prop]["START"]);
