@@ -177,12 +177,45 @@ App.PR = new function() {
 	};
 
 	/**
-	 *
+	 * Returns aray of applicable adjective values for a leveling noun
 	 * @param {string} Type
 	 * @param {string} Stat
 	 * @param {App.Entity.Player} Player
-	 * @param [Colorize]
-	 * @return ""
+	 * @returns {string[]}
+	 */
+	this.GetNoneAdjectives = function(Type, Stat, Player)
+	{
+		var tCfg = this.GetNamingConfig(Type);
+		var sCfg = tCfg != undefined ? tCfg[Stat] : undefined;
+		if (sCfg == undefined) return ""
+		var adjCfg = sCfg["ADJECTIVE"];
+		if (adjCfg == undefined) return "";
+
+		var adjectiveRatings = adjCfg["RATING"] || [Type + '/' + Stat];
+		var adjectiveIndicies = adjCfg["INDEX"] || adjectiveRatings;
+		var adjectiveApplicableLevels = adjCfg["APPLICABLE_LEVEL"] || adjectiveRatings.map(x => { return { "MIN" : 0, "MAX" : 100 };});
+
+		var adjs = [];
+		for (var i = 0; i < adjectiveRatings.length; ++i) {
+			var s = adjectiveIndicies[i].split('/');
+			var statVal = Player.GetStatPercent(s[0], s[1]);
+			if (statVal >= adjectiveApplicableLevels[i].MIN && statVal <= adjectiveApplicableLevels[i].MAX) {
+				var r = adjectiveRatings[i].split('/');
+				adjs.push(this.GetAdjective(r[0], r[1], statVal));
+			}
+		}
+
+		return adjs;
+	}
+
+	/**
+	 * Returns leveling noun, optionally with applicable adjectives prepended
+	 * @param {string} Type
+	 * @param {string} Stat
+	 * @param {App.Entity.Player} Player
+	 * @param {boolean} [Adjectives = false] Whether to prepend adjectives
+	 * @param {boolean} [Colorize = false] colorize output
+	 * @return {string}
 	 */
 	this.GetPlayerNoun = function(Type, Stat, Player, Adjectives, Colorize) {
 		var indexNames = this.GetNamingIndicies(Type, Stat, "NOUN");
@@ -192,20 +225,7 @@ App.PR = new function() {
 		var str = this.GetNoun(Type, Stat, indexValues, Colorize);
 
 		if (Adjectives == true) {
-			var tCfg = this.GetNamingConfig(Type);
-			var sCfg = tCfg != undefined ? tCfg[Stat] : undefined;
-			if (sCfg != undefined) {
-				var adjectiveRatings = sCfg["ADJECTIVE"] || [Type + '/' + Stat];
-				var adjectiveIndicies = sCfg["ADJECTIVE_INDEX"] || adjectiveRatings;
-
-				var adjs = [];
-				for (var i = 0; i < adjectiveRatings.length; ++i) {
-					var r = adjectiveRatings[i].split('/');
-					var s = adjectiveIndicies[i].split('/');
-					adjs.push(this.GetAdjective(r[0], r[1], Player.GetStatPercent(s[0], s[1])));
-				}
-				str = adjs.join(' ') + ' ' + str;
-			}
+			str = this.GetNoneAdjectives(Type, Stat, Player).join(' ') + ' ' + str;
 		}
 		return str;
     };

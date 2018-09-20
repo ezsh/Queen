@@ -163,21 +163,21 @@ App.Data.Lists = {
                 },
 				"BustFirmness": { "MIN" : 0, "MAX" : 100, "START" : 30,
 					"LEVELING" : {
-						5 :  { "COST" :  500, "STEP" : 1, "ADJECTIVE" : "saggy",          "COLOR" :  1},
-						10 : { "COST" :  400, "STEP" : 1, "ADJECTIVE" : "saggy+",            "COLOR" :  2},
-						15 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "saggy++",          "COLOR" :  3},
-						20 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "saggy+++",              "COLOR" :  4},
-						26 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "soft",            "COLOR" :  5},
-						32 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "soft+",          "COLOR" :  6},
-						38 : { "COST" :  150, "STEP" : 1, "ADJECTIVE" : "soft++",           "COLOR" :  7},
-						46 : { "COST" :  250, "STEP" : 1, "ADJECTIVE" : "soft+++",             "COLOR" :  8},
-						54 : { "COST" :  300, "STEP" : 1, "ADJECTIVE" : "firm",              "COLOR" :  9},
-						62 : { "COST" :  400, "STEP" : 1, "ADJECTIVE" : "firm+",             "COLOR" : 10},
-						71 : { "COST" :  500, "STEP" : 1, "ADJECTIVE" : "firm++",         "COLOR" : 12},
-						80 : { "COST" : 1000, "STEP" : 1, "ADJECTIVE" : "firm++",         "COLOR" : 13},
-						89 : { "COST" : 2000, "STEP" : 1, "ADJECTIVE" : "hard",          "COLOR" : 15},
-						98 : { "COST" : 4000, "STEP" : 1, "ADJECTIVE" : "hard+", "COLOR" : 16},
-					   100 : { "COST" : 8000, "STEP" : 1, "ADJECTIVE" : "rock-hard",     "COLOR" : 16}
+						5 :  { "COST" :  500, "STEP" : 1, "ADJECTIVE" : "saggy",                  "COLOR" :  1},
+						10 : { "COST" :  400, "STEP" : 1, "ADJECTIVE" : "slightly saggy",         "COLOR" :  2},
+						15 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "muschy and a bit saggy", "COLOR" :  3},
+						20 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "squashy",                "COLOR" :  4},
+						26 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "soft",                   "COLOR" :  5},
+						32 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "mellow",                 "COLOR" :  6},
+						38 : { "COST" :  150, "STEP" : 1, "ADJECTIVE" : "delicate",               "COLOR" :  7},
+						46 : { "COST" :  250, "STEP" : 1, "ADJECTIVE" : "shapely",                "COLOR" :  8},
+						54 : { "COST" :  300, "STEP" : 1, "ADJECTIVE" : "firm",                   "COLOR" :  9},
+						62 : { "COST" :  400, "STEP" : 1, "ADJECTIVE" : "very firm",              "COLOR" : 10},
+						71 : { "COST" :  500, "STEP" : 1, "ADJECTIVE" : "exceptionaly firm",      "COLOR" : 12},
+						80 : { "COST" : 1000, "STEP" : 1, "ADJECTIVE" : "stiff",                  "COLOR" : 13},
+						89 : { "COST" : 2000, "STEP" : 1, "ADJECTIVE" : "spherical",              "COLOR" : 15},
+						98 : { "COST" : 4000, "STEP" : 1, "ADJECTIVE" : "hard",                   "COLOR" : 16},
+					   100 : { "COST" : 8000, "STEP" : 1, "ADJECTIVE" : "rigid",                  "COLOR" : 16}
 					 }
 				},
                 "Lactation": { "MIN" : 0, "MAX" : 100, "START" : 0, "CM_MIN" : 0, "CM_MAX" : 0,
@@ -1443,7 +1443,10 @@ App.Data.Naming = {
 			 }
 		},
 		"Bust": {
-			"ADJECTIVE": ["BODY/Bust", "BODY/BustFirmness" ],
+			"ADJECTIVE": {
+				"APPLICABLE_LEVEL" : [{ "MIN" : 0, "MAX" : 100 }, { "MIN" : 3, "MAX" : 100 }],
+				"RATING": [ "BODY/Bust", "BODY/BustFirmness" ],
+			},
 			"NOUN" : {
 				"INDEX": [ "BODY/Bust", "BODY/BustFirmness"],
 				"LEVELING" : {
@@ -1465,19 +1468,23 @@ App.Data.Naming = {
 					88 : "fuck bags",
 					94 : "tits",
 					100 : {
-						0: "udders",
-						20: "torpedoes",
-						40: "tits",
-						60: "melons",
-						80: "globes",
-						100: "globes"
+						  0: "udders",
+						 10: "udders",
+						 20: "torpedoes",
+						 40: "tits",
+						 60: "melons",
+						 80: "globes",
+						100: "spheres"
 					}
 				}
 			}
 		},
 		"Ass" : {
-			"ADJECTIVE": [ "BODY/Ass", "BODY/AssFirmness" ],
-			"ADJECTIVE_INDEX": ["BODY/Ass", "STAT/Fitness" ],
+			"ADJECTIVE": {
+				"RATING": [ "BODY/Ass", "BODY/AssFirmness" ],
+				"INDEX" : [ "BODY/Ass", "STAT/Fitness" ],
+				"APPLICABLE_LEVEL" : [{ "MIN" : 0, "MAX" : 100 }, { "MIN" : 10, "MAX" : 100 }],
+			},
 			"NOUN": {
 				"INDEX": ["BODY/Ass", "STAT/Fitness"],
 				"LEVELING": {
