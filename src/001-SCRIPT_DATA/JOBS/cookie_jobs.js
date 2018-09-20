@@ -353,6 +353,7 @@ App.Data.JobData["COOK04"] = {
                 { "TAG" : "A", "TYPE" : "BODY", "NAME" : "Bust", "DIFFICULTY" : 100, "REWARD" : "MONEY", "R_NAME" : "MONEY", "VALUE" : 150, "OPT" : 0 }
             ],
             "POST" : [
+                { "TYPE" : "BODY_XP", "NAME" : "BustFirmness", "VALUE" : -20, "OPT" : "RANDOM" }
             ],
             "START" :
             "\"Whats this!\" he bellows, face askew.\n\n"+

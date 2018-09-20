@@ -37,6 +37,7 @@ App.Data.EffectLib["SUCCUBUS_PHILTRE"] = {
         p.AdjustStatXP('Hormones', 300);
         p.AdjustStatXP('Perversion', 500);
         p.AdjustBodyXP('Bust', 500);
+        p.AdjustBodyXP('BustFirmness', 500, 80);
         p.AdjustBodyXP('Ass', 500);
         p.AdjustBodyXP('Hips', 500);
         p.AdjustBodyXP('Waist',-500);
@@ -61,6 +62,7 @@ App.Data.EffectLib["FEMALE_MANDRAKE"] = {
         p.AdjustStatXP('Perversion', 300);
         p.AdjustBodyXP('Lips', 300);
         p.AdjustBodyXP('Bust', 300);
+        p.AdjustBodyXP('BustFirmness', 100, 50);
         p.AdjustBodyXP('Ass', 300);
         p.AdjustBodyXP('Hips', 300);
         p.AdjustBodyXP('Waist',-300);
@@ -108,6 +110,7 @@ App.Data.EffectLib["SIREN_ELIXIR"] = {
         p.AdjustStatXP('Perversion',-200);
         p.AdjustBodyXP('Face', 100);
         p.AdjustBodyXP('Bust', 100);
+        p.AdjustBodyXP('BustFirmness', 100, 70);
         p.AdjustBodyXP('Hips', 100);
         p.AdjustBodyXP('Ass', 100);
         p.AdjustBodyXP('Waist',-100);
@@ -146,6 +149,7 @@ App.Data.EffectLib["POSSET_VENUS"] = {
         p.AdjustStat('Hormones', 200);
         p.AdjustBody('Face', 1000);
         p.AdjustBody('Bust', 15);
+        p.AdjustBodyXP('BustFirmness', 15, 50);
         p.AdjustBody('Hips', 20);
         p.AdjustBody('Ass', 16);
         p.AdjustBody('Waist',-18);
