@@ -52,22 +52,23 @@ App.Data.EffectLib.NATURAL_HORMONE_SHIFT = {
         //Adjust physical characteristics based on hormone balance. Only shift body if there is XP related to the hormone
         //shift stored in the player object.
         var HormoneShift = 0;
+        // The "Futa" stat blocks penis and balls shrinking if their stats are lower or equal to the futa stat.
+        // Also, if the balls stat percent is lower than the futa one, balls do not produce hormonal shift
+        var futaPercent = p.GetStatPercent("STAT", "Futa");
 
-        if ((this.GetStat("STAT", "Hormones") > 100) && this.GetStatXP("STAT", "Hormones") > 0 ) {
-            HormoneShift = ( this.GetStat("STAT", "Hormones") - 100 );
-            this.AdjustBodyXP("Face",   HormoneShift            ,     40);
-            this.AdjustBodyXP("Bust",   HormoneShift            ,      5);
-            this.AdjustBodyXP("Lips",   HormoneShift            ,     40);
-            this.AdjustBodyXP("Ass",    HormoneShift            ,     10);
-            this.AdjustBodyXP("Hips",   HormoneShift            ,     10);
-            // The "Futa" stat blocks penis shrinking if penis stat is lower or equal to the futa stat.
-            // The balls shrinking is not affected, as usual futas have no balls.
-            var FutaPercent = this.GetStatPercent("STAT", "Futa");
-            var PenisPercent = this.GetStatPercent("BODY", "Penis");
-            if (PenisPercent > FutaPercent) {
-                this.AdjustBodyXP("Penis", (HormoneShift * -1.0)    ,      1);
+        if ((p.GetStat("STAT", "Hormones") > 100) && p.GetStatXP("STAT", "Hormones") > 0 ) {
+            HormoneShift = ( p.GetStat("STAT", "Hormones") - 100 );
+            p.AdjustBodyXP("Face",   HormoneShift            ,     40);
+            p.AdjustBodyXP("Bust",   HormoneShift            ,      5);
+            p.AdjustBodyXP("Lips",   HormoneShift            ,     40);
+            p.AdjustBodyXP("Ass",    HormoneShift            ,     10);
+            p.AdjustBodyXP("Hips",   HormoneShift            ,     10);
+            if (p.GetStatPercent("BODY", "Penis") > futaPercent) {
+                p.AdjustBodyXP("Penis", (HormoneShift * -1.0)    ,      1);
             }
-            this.AdjustBodyXP("Balls", (HormoneShift * -1.0)    ,      0);
+            if (p.GetStatPercent("BODY", "Balls") > futaPercent) {
+                p.AdjustBodyXP("Balls", (HormoneShift * -1.0)    ,      0);
+            }
         } else {
             if (p.GetStatXP("STAT", "Hormones") < 0) {
                 HormoneShift = ( 100 - p.GetStat("STAT", "Hormones"));
@@ -80,7 +81,10 @@ App.Data.EffectLib.NATURAL_HORMONE_SHIFT = {
                 p.AdjustBodyXP("Balls", HormoneShift, p.GetStartStat("BODY", "Balls"));
             }
         }
-    }
+        if (p.GetStatPercent("BODY", "Balls") > futaPercent) {
+            p.AdjustStatXP("Hormones", ((p.GetStat("BODY", "Balls") / 5) * -1.0)); // Bigger balls add more male hormones.
+        }
+	}
 };
 
 /** FITNESS */
