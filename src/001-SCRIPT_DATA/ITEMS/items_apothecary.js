@@ -142,14 +142,14 @@ App.Data.Drugs["AP_baneberry"] = {
     "Message": "You apply the plaster over your chest and allow it to harden. Afterward, it flakes off easily, but a warming sensation remains.",
     "Type": "potion",
     "Charges": 1,
-    "Effects" : [ "BUST_XP_RARE", "FEMALE_HORMONE_XP_RARE", "TOXICITY_UNCOMMON" ]
+    "Effects" : [ "BUST_XP_RARE", "BUST_FIRMNESS_XP_RARE", "FEMALE_HORMONE_XP_RARE", "TOXICITY_UNCOMMON" ]
 };
 
 App.Data.Drugs["AP_tanzy"] = {
     "Name": "reduction of tanzy and snakeweed",
     "ShortDesc": "Reduction of Tanzy and Snakeweed",
     "LongDesc": "This vibrant, gold-colored paste advertises enhanced potency of the male genitalia.",
-    "Message": "You rub the yellow goo around your cock, briefly inducing pleasure like a cresting orgasm. Nothing else changes, but it feels amazing while it lasts.",
+    "Message": "You rub the yellow goo around your nPENIS, briefly inducing pleasure like a cresting orgasm. Nothing else changes, but it feels amazing while it lasts.",
     "Type": "potion",
     "Charges": 1,
     "Effects" : [ "PENIS_XP_RARE", "BALLS_XP_RARE", "MALE_HORMONE_XP_RARE", "TOXICITY_UNCOMMON" ]
@@ -182,7 +182,7 @@ App.Data.Drugs["AP_thorn"] = {
     "Message": "Upon rubbing the lightly gritty poultice over your face and chest, your skin starts to feel a little softer.",
     "Type": "potion",
     "Charges": 1,
-    "Effects" : [ "FACE_XP_RARE", "BUST_XP_UNCOMMON", "FEMALE_HORMONE_XP_RARE", "TOXICITY_UNCOMMON" ]
+    "Effects" : [ "FACE_XP_RARE", "BUST_XP_UNCOMMON", "BUST_FIRMNESS_XP_UNCOMMON", "FEMALE_HORMONE_XP_RARE", "TOXICITY_UNCOMMON" ]
 };
 
 //======================================
