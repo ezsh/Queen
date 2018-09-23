@@ -56,9 +56,16 @@ App.PR = new function() {
 			if (prop > v) break;
 			lastSmallerRating = prop;
 		}
-		if (lastSmallerRating == undefined)  return "Untyped rating: " + Value;
-		if (nextValues == undefined) return Ratings[lastSmallerRating];
-		return this.GetMultiIndexLevelingProperty(Ratings[lastSmallerRating], nextValues);
+        if (lastSmallerRating == undefined)  return "Untyped rating: " + Value;
+        var res = Ratings[lastSmallerRating];
+		if (nextValues == undefined) {
+            if (Array.isArray(res)) {
+                return res[Math.floor(Math.random() * res.length)];
+            } else {
+                return res;
+            }
+        }
+		return this.GetMultiIndexLevelingProperty(res, nextValues);
 	};
 
     /**
@@ -252,29 +259,19 @@ App.PR = new function() {
      */
     this.TokenizeRating = function(Player, Type, Stat, String)
     {
-		var _this = this;
-		function adjReplacer(match, stat) {
-			return _this.GetAdjective("BODY", stat, Player.GetStat("BODY", stat));
-		}
-
-		function nounReplacer(match, stat) {
-			return _this.GetPlayerNoun("BODY", stat, Player, false, true);
-		}
-
+        var _this = this;
+        function nounReplacer(match, delim) {
+            return _this.GetPlayerNoun(Type, Stat, Player, false, true) + delim;
+        }
+        function adjReplace(match, delim) {
+            return _this.GetAdjective(Type, Stat, Player.GetStat(Type, Stat)) + delim;
+        }
         String = String.replace(/PLAYER_NAME/g, Player.SlaveName);
-        String = String.replace(/pBUST/g, this.pBust(Player, 1));
-        String = String.replace(/pASS/g, this.pAss(Player, 1));
-		String = String.replace(/pCUP/g, this.pCup(Player));
-		String = String.replace(/NOUN_([A-Za-z]+)/g, nounReplacer);
-		String = String.replace(/ADJECTIVE_([A-Za-z]+)/g, adjReplacer);
-        String = String.replace(/pHIPS/g, this.pHips(Player, 1));
-		String = String.replace(/pHORMONES/g, this.pHormones(Player, 1));
-		String = String.replace(/NOUN/g, this.GetPlayerNoun(Type, Stat, Player, false, true));
-        String = String.replace(/ADJECTIVE/g, this.GetAdjective(Type, Stat, Player.GetStat(Type, Stat)));
         String = String.replace(/LENGTH_C/g, this.lengthString(this.StatToCM(Player,Stat), true).toString());
         String = String.replace(/LENGTH/g, this.lengthString(this.StatToCM(Player,Stat), false).toString());
-
-        return String;
+        String = String.replace(/NOUN([^A-Za-z_|$])/g, nounReplacer);
+        String = String.replace(/ADJECTIVE([^A-Za-z_|$])/g, adjReplace);
+        return this.TokenizeString(Player, undefined, String);
     };
 
     /**
@@ -726,7 +723,7 @@ App.PR = new function() {
         var fp = pFuta - pPenis;
         if (fp > 90) return "You crave for a bigger penis."
         if (fp > 60) return "You feel an urge to grow a bigger penis."
-        if (fp > 30) return "You a bigger penis would be a good thing to get."
+        if (fp > 30) return "You are sure bigger penis would be a good thing to get."
         if (fp > 5) return "You feel your penis could be a bit bigger."
         return "You consider your penis size to be about right for you."
     }
@@ -991,35 +988,45 @@ App.PR = new function() {
 			function nounReplacer(match, stat) {
 				return _this.GetPlayerNoun("BODY", stat, Player, false, true);
 			}
-			function pReplacer(match, prefix, stat) {
+			function pReplacer(match, prefix, stat, delim) {
 				// uppercase charachters following underscore (which is removed)
 				// STAT_NAME -> StatName
 				var statName = stat[0] + stat.slice(1).toLowerCase().replace(/_([a-z])/g, (m, c) => c.toUpperCase());
 				console.log("Gettting stat '" + stat + "'");
 				var statFuncName = 'p' + statName;
 				if (_this.hasOwnProperty(statFuncName))
-					return _this[statFuncName](Player, 1);
-				return prefix + stat;
+					return _this[statFuncName](Player, 1) + delim;
+				return prefix + stat + delim;
 			}
-			function nReplacer(match, prefix, stat) {
+			function nReplacer(match, prefix, stat, delim) {
 				// uppercase charachters following underscore (which is removed)
 				// STAT_NAME -> StatName
 				var statName = stat[0] + stat.slice(1).toLowerCase().replace(/_([a-z])/g, (m, c) => c.toUpperCase());
-				console.log("Gettting none for '" + statName + "'");
+				console.log("Gettting noun for '" + statName + "'");
 				if (App.Data.Naming.BodyConfig.hasOwnProperty(statName))
-					return _this.GetPlayerNoun("BODY", statName, Player, true, true);
-				return prefix + stat;
+					return _this.GetPlayerNoun("BODY", statName, Player, true, true) + delim;
+				return prefix + stat + delim;
+            }
+            function vReplacer(match, prefix, stat, delim) {
+				// uppercase charachters following underscore (which is removed)
+				// STAT_NAME -> StatName
+				var statName = stat[0] + stat.slice(1).toLowerCase().replace(/_([a-z])/g, (m, c) => c.toUpperCase());
+				console.log("Gettting stat for '" + statName + "'");
+				if (Player.GetStatObject("BODY").hasOwnProperty(statName))
+					return Player.GetStat("BODY", statName) + delim;
+				return prefix + stat + delim;
 			}
 
             String = String.replace(/PLAYER_NAME/g, "@@color:DeepPink;"+Player.SlaveName+"@@");
             String = String.replace(/GF_NAME/g, "@@color:pink;"+Player.GirlfriendName+"@@");
 			String = String.replace(/pCUP/g, this.pCup(Player)); // needs special handling because it has only a single parameter
-			String = String.replace(/NOUNE_([A-Za-z]+)/g, nounReplacer);
-			String = String.replace(/ADJECTIVE_([A-Za-z]+)/g, adjReplacer);
+			String = String.replace(/NOUN_([A-Za-z_]+)/g, nounReplacer);
+			String = String.replace(/ADJECTIVE_([A-Za-z_]+)/g, adjReplacer);
 			String = String.replace(/pBLOWJOBS/g, this.GetAdjective("SKILL", "BlowJobs", Player.GetStat("SKILL", "BlowJobs")));
 			String = String.replace(/pPHASE/g, Player.GetPhase(false));
-			String = String.replace(/(p)([A-Z_]+)/g, pReplacer);
-			String = String.replace(/(n)([A-Z_]+)/g, nReplacer);
+			String = String.replace(/(p)([A-Z_]+)([^A-Za-z]|$)/g, pReplacer);
+            String = String.replace(/(n)([A-Z_]+)([^A-Za-z]|$)/g, nReplacer);
+            String = String.replace(/(v)([A-Z_]+)([^A-Za-z]|$)/g, vReplacer);
 
             return String;
         };
