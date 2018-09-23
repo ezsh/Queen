@@ -111,13 +111,13 @@ App.Data.EffectLib["BUST_FIRMNESS_XP_COMMON"] = {
 App.Data.EffectLib["BUST_FIRMNESS_XP_UNCOMMON"] = {
     "FUN" : /** @param {App.Entity.Player} p
      @param {App.Item.Consumable} o*/
-    function(o,p) { p.AdjustBodyXP('BustFirmness', 100); },
+    function(o,p) { p.AdjustBodyXP('BustFirmness', 100, 65); },
     "VALUE" : 100, "KNOWLEDGE" : [ "Bust Firmness++" ]
 };
 App.Data.EffectLib["BUST_FIRMNESS_XP_RARE"] = {
     "FUN" : /** @param {App.Entity.Player} p
      @param {App.Item.Consumable} o*/
-    function(o,p) { p.AdjustBodyXP('BustFirmness', 500); },
+    function(o,p) { p.AdjustBodyXP('BustFirmness', 500, 85); },
     "VALUE" : 500, "KNOWLEDGE" : [ "Bust Firmness+++" ]
 };
 App.Data.EffectLib["BUST_FIRMNESS_XP_LEGENDARY"] = {
