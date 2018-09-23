@@ -825,7 +825,7 @@ App.Items.Consumable = /** @class Consumable @extends {App.Item} */ class Consum
         var Output = this.Data["Message"];
         if (this._messageBuffer.length > 0) Output += this._messageBuffer.join("\n");
         this._messageBuffer = [ ];
-        return Output;
+        return App.PR.TokenizeString(Player, undefined, Output);
     }
 
     /**
