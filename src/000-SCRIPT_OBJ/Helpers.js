@@ -194,9 +194,9 @@ App.PR = new function() {
 	{
 		var tCfg = this.GetNamingConfig(Type);
 		var sCfg = tCfg != undefined ? tCfg[Stat] : undefined;
-		if (sCfg == undefined) return ""
+		if (sCfg == undefined) return []
 		var adjCfg = sCfg["ADJECTIVE"];
-		if (adjCfg == undefined) return "";
+		if (adjCfg == undefined) return [];
 
 		var adjectiveRatings = adjCfg["RATING"] || [Type + '/' + Stat];
 		var adjectiveIndicies = adjCfg["INDEX"] || adjectiveRatings;
