@@ -1322,21 +1322,21 @@ App.Data.Ratings = {
                100 : "Your ADJECTIVE ADJECTIVE_BustFirmness pCUP sized NOUN make it known to everyone that you're a total fuck slut ready for sex. <<if vBUST_FIRMNESS < 50>>They shake and jiggle at the slightest motion and spill out of your top every couple of minutes.<</if>> When you eat, you place them on the table to avoid back strain and you have to sleep on your side or you'll suffocate."
 			},
 			"BustFirmness": {
-				0 : "Your NOUN_Bust sag down as two <<if vBUST < 35>>empty<<else>>heavy<</if>> sacks.",
-				10 : "Your NOUN_Bust sag down as two <<if vBUST < 35>>empty<<else>>heavy<</if>> sacks.",
-				15 : "Your <<if vBUST > 45>>heavy<</if>> NOUN_Bust sag towards your navel.",
-				20 : "Your pBUST ",
-				26 : "Your ADJECTIVE_Bust breasts are very soft to toch and pleasurable to squeeze.",
-				/*32 : "Your mellow pBUST breast ",*/
-				38 : "Your NOUN_Bust are of pleasant shape, well defined by ther weight and size.",
-				46 : "Your NOUN_Bust maintain almost ideal tear-drop shape.",
-				54 : "Your NOUN_Bust sit firm on your chest.",
-				62 : "Your NOUN_Bust are very firm, they can be squeezed and still feel full.",
-				71 : "Your NOUN_Bust are unnaturally firm, do not jiggle but move a little as a whole.",
-				80 : "Your stiff pBUST",
-				89 : "Your spherical pBUST",
-				98 : "Your hard NOUN_Bust ",
-                100 : "Your rigid pBUST spheres sits high on your chest.",
+				  0 : "Your NOUN_Bust sag down as two <<if vBUST < 35>>empty<<else>>heavy<</if>> sacks.",
+				 10 : "Your NOUN_Bust sag down as two <<if vBUST < 35>>empty<<else>>heavy<</if>> sacks.",
+				 15 : "Your <<if vBUST > 45>>heavy<</if>> NOUN_Bust sag towards your navel.",
+				 20 : "Your pBUST ",
+				 26 : "Your ADJECTIVE_Bust breasts are very soft to toch and pleasurable to squeeze.",
+				 /*32 : "Your mellow pBUST breast ",*/
+				 38 : "Your NOUN_Bust are of pleasant shape, well defined by ther weight and size.",
+				 46 : "Your NOUN_Bust maintain almost ideal tear-drop shape.",
+				 54 : "Your NOUN_Bust sit firm on your chest.",
+				 62 : "Your NOUN_Bust are very firm, they can be squeezed and still feel full.",
+				 71 : "Your NOUN_Bust are unnaturally firm, do not jiggle but move a little as a whole.",
+				 80 : "Your ADJECTIVE_Bust NOUN_Bust are nearly <<if vBUST < 50>>hemi<</if>>spherical in shape.",
+				 89 : "Your ADJECTIVE_Bust NOUN_Bust are completely <<if vBUST < 50>>hemi<</if>>spherical in shape.",
+				 98 : "Your hard NOUN_Bust are so firm that can be deformed from their shape only by hard squeezing.",
+                100 : "Your ADJECTIVE_Bust NOUN_Bust are unnaturally rigid, they always maintan their ideal shape. It is impossible to squeeze them even by a tiny bit.",
 			},
             "Lips": {
                   0: "ADJECTIVE NOUN like an old person or a zombie.",
@@ -1497,11 +1497,13 @@ App.Data.Naming = {
 		"Waist" : { "NOUN" : "waist"},
 		"Penis" : {
 			"NOUN" : {
-				  0: "sissy clit",
-				 10: "over sized sissy clit",
-				 25: "dick",
-				 66: "cock",
-				100: "tool"
+                "LEVELING": {
+                    0: "sissy clit",
+                    10: "over sized sissy clit",
+                    25: "dick",
+                    66: "cock",
+                    100: "tool"
+                }
 		   	},
 		}
 	}
