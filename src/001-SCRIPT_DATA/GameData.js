@@ -1335,7 +1335,7 @@ App.Data.Ratings = {
 				 71 : "Your NOUN_Bust are unnaturally firm, do not jiggle but move a little as a whole.",
 				 80 : "Your ADJECTIVE_Bust NOUN_Bust are nearly <<if vBUST < 50>>hemi<</if>>spherical in shape.",
 				 89 : "Your ADJECTIVE_Bust NOUN_Bust are completely <<if vBUST < 50>>hemi<</if>>spherical in shape.",
-				 98 : "Your hard NOUN_Bust are so firm that can be deformed from their shape only by hard squeezing.",
+				 98 : "Your NOUN_Bust are so firm that their <<if vBUST < 50>>hemi<</if>>spherical shape can be deformed only by squeezing them as hard as you can.",
                 100 : "Your ADJECTIVE_Bust NOUN_Bust are unnaturally rigid, they always maintan their ideal shape. It is impossible to squeeze them even by a tiny bit.",
 			},
             "Lips": {
