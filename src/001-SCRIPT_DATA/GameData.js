@@ -114,7 +114,8 @@ App.Data.Lists = {
                 },
                 "Lips": { "MIN" : 0, "MAX" : 100, "START" : 20, "CM_MIN" : 0, "CM_MAX": 0,
                     "LEVELING" : {
-                       5 :  { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "withered",          "COLOR" :  1},
+                        0 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "withered",          "COLOR" :  1},
+                        5 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "withered",          "COLOR" :  1},
                        10 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "wilted",            "COLOR" :  2},
                        15 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "wrinkled",          "COLOR" :  3},
                        20 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "thin",              "COLOR" :  4},
@@ -163,7 +164,8 @@ App.Data.Lists = {
                 },
 				"BustFirmness": { "MIN" : 0, "MAX" : 100, "START" : 30,
 					"LEVELING" : {
-						5 :  { "COST" :  500, "STEP" : 1, "ADJECTIVE" : "saggy",                  "COLOR" :  1},
+                        0 :  { "COST" :  500, "STEP" : 1, "ADJECTIVE" : "saggy",                  "COLOR" :  1},
+                        5 :  { "COST" :  500, "STEP" : 1, "ADJECTIVE" : "saggy",                  "COLOR" :  1},
 						10 : { "COST" :  400, "STEP" : 1, "ADJECTIVE" : "slightly saggy",         "COLOR" :  2},
 						15 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "muschy and a bit saggy", "COLOR" :  3},
 						20 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "squashy",                "COLOR" :  4},
@@ -182,6 +184,7 @@ App.Data.Lists = {
 				},
                 "Lactation": { "MIN" : 0, "MAX" : 100, "START" : 0, "CM_MIN" : 0, "CM_MAX" : 0,
                     "LEVELING" : {
+                        0 :   { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "", "COLOR" : 0 },
                         5 :   { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "", "COLOR" : 0 },
                         10 :  { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "", "COLOR" : 0 },
                         15 :  { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "", "COLOR" : 0 },
@@ -229,6 +232,7 @@ App.Data.Lists = {
 				},
 				"AssFirmness": {  "MIN" : 0, "MAX" : 100,
 					"LEVELING" : {
+                        0 :   { "ADJECTIVE" : "flabby", "COLOR" :  1},
                         5 :   { "ADJECTIVE" : "flabby", "COLOR" :  1},
                         10 :  { "ADJECTIVE" : "flabby", "COLOR" :  2},
                         15 :  { "ADJECTIVE" : "flabby", "COLOR" :  3},
@@ -314,6 +318,7 @@ App.Data.Lists = {
                 },
                 "Hair": { "MIN" : 0, "MAX" : 100, "START" : 10, "CM_MIN" : 5, "CM_MAX" : 180,
                     "LEVELING" : {
+                         0 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "", "COLOR" : 0 },
                          5 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "", "COLOR" : 0 },
                         10 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "", "COLOR" : 0 },
                         15 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "", "COLOR" : 0 },
@@ -694,6 +699,7 @@ App.Data.Lists = {
                 },
                 "Fitness": { "MIN" : 0, "MAX" : 100, "START" : 20,
                     "LEVELING" : {
+                         0 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "unhealthy",    "COLOR" :  1},
                          5 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "unhealthy",    "COLOR" :  1},
                         10 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "weak",         "COLOR" :  2},
                         15 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "flabby",       "COLOR" :  3},
@@ -752,6 +758,7 @@ App.Data.Lists = {
                 },
                 "Futa": { "MIN" : 0, "MAX" : 100, "START" : 0,
                 "LEVELING" : {
+                     0 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "non-existent", "COLOR" :  1},
                      5 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "shy",          "COLOR" :  1},
                     10 : { "COST" :  100, "STEP" : 1, "ADJECTIVE" : "timid",        "COLOR" :  2},
                     15 : { "COST" :  125, "STEP" : 1, "ADJECTIVE" : "level15",       "COLOR" :  3},
