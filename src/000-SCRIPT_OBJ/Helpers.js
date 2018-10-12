@@ -21,24 +21,72 @@ App.PR = new function() {
      * @param [Colorize]
      * @returns {string}
      */
-	    this.GetRating = function (Type, Value, Colorize) {
-            Colorize    = Colorize || false;
-            var Ratings  = App.Data.Ratings[Type];
+	this.GetRating = function (Type, Value, Colorize) {
+		Colorize    = Colorize || false;
+		var Ratings  = App.Data.Ratings[Type];
 
-            var lastSmallerRating;
-            for (var prop in Ratings) {
-                if (!Ratings.hasOwnProperty(prop)) continue;
-                if (prop > Value) break;
-                lastSmallerRating = prop;
-            }
+		var lastSmallerRating;
+		for (var prop in Ratings) {
+			if (!Ratings.hasOwnProperty(prop)) continue;
+			if (prop > Value) break;
+			lastSmallerRating = prop;
+		}
 
-            if (lastSmallerRating == undefined)  return "Untyped rating: " + Type + "," + Value;
-            if (Colorize == true) {
-                return this.ColorizeString(Value, Ratings[lastSmallerRating]);
-            } else {
-                return Ratings[lastSmallerRating];
-            }
-        };
+		if (lastSmallerRating == undefined)  return "Untyped rating: " + Type + "," + Value;
+		if (Colorize == true) {
+			return this.ColorizeString(Value, Ratings[lastSmallerRating]);
+		} else {
+			return Ratings[lastSmallerRating];
+		}
+	};
+
+	/**
+     * Helper function. Checks relevant statistic config and returns the leveling record if one exists.
+     * @param {string} Type
+     * @param {string} Stat
+     * @param {number} Value
+     * @returns {*}
+     */
+	this.GetLevelingRecord = function(Type, Stat, Value)
+	{
+        var Ratings = this.GetStatConfig(Type)[Stat]["LEVELING"];
+        if (Ratings instanceof Function) return Ratings(Value);
+		var lastSmallerProp;
+		for (var prop in Ratings) {
+			if (!Ratings.hasOwnProperty(prop)) continue;
+			if (prop > Value) break;
+			lastSmallerProp = prop;
+		}
+		if (lastSmallerProp !== undefined) return Ratings[lastSmallerProp];
+		return undefined;
+    };
+
+    /**
+     * Helper function. Get total amount of XP points needed to raise from a to the b
+     * @param {string} Type
+     * @param {string} Stat
+     * @param {number} Value1
+     * @param {number} Value2
+     * @returns {number}
+     */
+	this.GetTotalXPPoints = function(Type, Stat, ValueA, ValueB)
+	{
+        var Ratings = this.GetStatConfig(Type)[Stat].LEVELING;
+
+        var lastLeveledTo = ValueA;
+        var res = 0;
+        var prop;
+		for (prop in Ratings) {
+            if (!Ratings.hasOwnProperty(prop)) continue;
+            if (prop <= ValueA) continue;
+            if (prop > ValueB) break;
+
+            res += (prop - lastLeveledTo) * Ratings[prop].COST;
+            lastLeveledTo = prop;
+		}
+        res += (ValueB - lastLeveledTo) * Ratings[prop].COST;
+		return res;
+	};
 
     /**
      * Helper function. Checks relevant statistic config and returns an ADJECTIVE (colorized) for use if one exists.

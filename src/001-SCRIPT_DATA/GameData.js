@@ -133,6 +133,7 @@ App.Data.Lists = {
                 },
                 "Bust": { "MIN" : 0, "MAX" : 100, "START" : 0, "CM_MIN" : 80, "CM_MAX": 130,
                     "LEVELING" : {
+                        0 : { "COST" : 150, "STEP" : 1, "ADJECTIVE" : "flat",        "COLOR" :  1},
                         5 : { "COST" : 150, "STEP" : 1, "ADJECTIVE" : "swollen",     "COLOR" :  3},
                         8 : { "COST" : 150, "STEP" : 1, "ADJECTIVE" : "perky",       "COLOR" :  4},
                        11 : { "COST" : 175, "STEP" : 1, "ADJECTIVE" : "shapely",     "COLOR" :  5},
