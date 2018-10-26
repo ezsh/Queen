@@ -132,24 +132,11 @@ App.Data.Lists = {
                     }
                 },
                 "Bust": { "MIN" : 0, "MAX" : 100, "START" : 0, "CM_MIN" : 80, "CM_MAX": 130,
-                    "LEVELING_COST" : {
-                        0 : { "COST" : 150, "STEP" : 1},
-                       11 : { "COST" : 175, "STEP" : 1},
-                       19 : { "COST" : 200, "STEP" : 1},
-                       29 : { "COST" : 220, "STEP" : 1},
-                       34 : { "COST" : 300, "STEP" : 1},
-                       39 : { "COST" : 325, "STEP" : 1},
-                       44 : { "COST" : 350, "STEP" : 1},
-                       49 : { "COST" : 375, "STEP" : 1},
-                       54 : { "COST" : 400, "STEP" : 1},
-                       59 : { "COST" : 425, "STEP" : 1},
-                       64 : { "COST" : 450, "STEP" : 1},
-                       76 : { "COST" : 475, "STEP" : 1},
-                       82 : { "COST" : 500, "STEP" : 1},
-                       88 : { "COST" : 525, "STEP" : 1},
-                       94 : { "COST" : 550, "STEP" : 1},
-                      100 : { "COST" : 575, "STEP" : 1}
-                    },
+                    "LEVELING_COST" : function(level) {
+                        if (level <= 0) return 0;
+                        var cup = level/3;
+                        return Math.floor((9.51*cup*cup + 39.7*cup + 190) * 3.23);
+                        },
                     "LEVELING" : {
                         0 : { "ADJECTIVE" : "flat",        "COLOR" :  1},
                         5 : { "ADJECTIVE" : "swollen",     "COLOR" :  3},

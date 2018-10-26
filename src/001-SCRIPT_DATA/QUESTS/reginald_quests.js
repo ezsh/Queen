@@ -107,7 +107,7 @@ App.Data.Quests["Q005"] = {
         // Flags that are set when quest is completed.
     ],
     "CHECKS": [
-        {"TYPE": "STAT_BODY", "NAME": "Bust", "VALUE": 11},
+        {"TYPE": "STAT_BODY", "NAME": "Bust", "VALUE": 13},
         {"TYPE": "STAT_BODY", "NAME": "Lips", "VALUE": 32},
         {"TYPE": "STAT_BODY", "NAME": "Ass", "VALUE": 11}
     ],
@@ -190,7 +190,7 @@ App.Data.Quests["Q007"] =  {
         // Flags that are set when quest is completed.
     ],
     "CHECKS": [
-        {"TYPE": "STAT_BODY", "NAME": "Bust", "VALUE": 39},
+        {"TYPE": "STAT_BODY", "NAME": "Bust", "VALUE": 42},
         {"TYPE": "STAT_BODY", "NAME": "Ass", "VALUE": 39},
         {"TYPE": "STAT_BODY", "NAME": "-Waist", "VALUE": 30},
         {"TYPE": "STAT_BODY", "NAME": "Face", "VALUE": 59},
